@@ -37,8 +37,9 @@ $(function () {
             sampleDoc = jsxml.fromString(sampleXML);
             xslString = __html__['public_html/qunit/transform/test_transform.xsl'];
             transformedHTML = $.parseHTML(jsxml.transReady(sampleDoc, xslString));
-            $(":root").append(transformedHTML);
-
+             $("body").prepend("<div id='qunit-fixture'></div>");
+            //setData();
+            //console.log($(":root").html());
 
         }
 

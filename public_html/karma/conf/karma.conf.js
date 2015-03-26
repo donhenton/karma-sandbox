@@ -15,14 +15,9 @@ module.exports = function (config) {
             'public_html/js/jquery/dist/jquery.js',
             'public_html/js/jsxml.js',
             'public_html/karma/tests/**_tests.js',
-            'public_html/qunit/transform/test_transform.xsl',
-            'public_html/qunit/transform/test.xml',
-
-                    // {pattern: 'public_html/transforms/*.frump', include: false, watched: false, served: true},
-                    //{pattern: 'public_html/transforms/*.xslt', include: false, watched: false, served: true},
-                    //{pattern: 'public_html/transforms/*.html', include: false, watched: false, served: true},
-                    //{pattern: 'test/*.js', include: true, watched: false, served: true} 
-        ],
+             'public_html/qunit/transform/test_transform.xsl' ,
+             'public_html/qunit/transform/test.xml'     
+         ],
         htmlReporter: {
             outputDir: 'karma_html', // where to put the reports  
             templatePath: null, // set if you moved jasmine_template.html 
