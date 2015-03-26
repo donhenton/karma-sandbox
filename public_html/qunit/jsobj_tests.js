@@ -27,7 +27,7 @@ $(function () {
         return this.x;
     };
 
-    module("jsobj_tests.js javascript objects", {
+    QUnit.module("jsobj_tests.js javascript objects", {
         setup: function () {
             // console.log("in setup for js obj");
         },
@@ -37,14 +37,14 @@ $(function () {
     });
 
 
-    test('test init values', function () {
+    QUnit.test('test init values', function () {
         var alpha1 = new alpha();
 
         equal(alpha1.getX(), 1);
         equal(alpha1.getY(), 2);
     });
 
-    test('test mutators', function () {
+    QUnit.test('test mutators', function () {
         var alpha2 = new alpha();
         alpha2.setX(4);
         alpha2.setY(6);

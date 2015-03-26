@@ -5,32 +5,32 @@
 module.exports = function (config) {
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '../../..', 
+        basePath: '../../..',
         autoWatch: false,
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['qunit'],
-         
         // list of files / patterns to load in the browser
         files: [
             'public_html/js/jquery/dist/jquery.js',
             'public_html/js/jsxml.js',
-            'public_html/karma/tests/jsobj_tests.js',
-            'public_html/karma/tests/xslt_tests.js'
+            'public_html/karma/tests/**_tests.js',
+            'public_html/qunit/transform/test_transform.xsl',
+            'public_html/qunit/transform/test.xml',
 
                     // {pattern: 'public_html/transforms/*.frump', include: false, watched: false, served: true},
                     //{pattern: 'public_html/transforms/*.xslt', include: false, watched: false, served: true},
                     //{pattern: 'public_html/transforms/*.html', include: false, watched: false, served: true},
                     //{pattern: 'test/*.js', include: true, watched: false, served: true} 
         ],
-         htmlReporter: {
+        htmlReporter: {
             outputDir: 'karma_html', // where to put the reports  
             templatePath: null, // set if you moved jasmine_template.html 
             focusOnFailures: false, // reports show failures on start 
             namedFiles: false, // name files instead of creating sub-directories 
             pageTitle: "geta job", // page title for reports; browser info by default 
             urlFriendlyName: true, // simply replaces spaces with _ for files/dirs 
-       
+
 
             // experimental 
             preserveDescribeNesting: false, // folded suites stay folded  
@@ -40,7 +40,9 @@ module.exports = function (config) {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             '**/*.html': ['html2js'],
-            '**/*.xslt': ['html2js'],
+            '**/*.xslt': ['html2js'], 
+            '**/*.xml': ['html2js'], 
+            '**/*.xsl': ['html2js'],
             '**/*.js': ['coverage']
         },
         // test results reporter to use
@@ -54,9 +56,11 @@ module.exports = function (config) {
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_DEBUG,
+        
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-         browsers: ['PhantomJS'],
+        //browsers: ['PhantomJS'],
+        browsers: ['Chrome'],
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
         singleRun: true

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/* global jsxml */
+/* global jsxml, QUnit */
 
 $(function () {
 
@@ -31,23 +31,21 @@ $(function () {
     {
         if (sampleXML === null)
         {
-            var xr = $.ajax("qunit/transform/test.xml", {async: false});
-            sampleXML = xr.responseText;
-            //not found if it can't be loaded
+
+            sampleXML = __html__['public_html/qunit/transform/test.xml'];
             assert.ok("NOT FOUND" !== sampleXML);
             sampleDoc = jsxml.fromString(sampleXML);
-            xslString = $.ajax("qunit/transform/test_transform.xsl",
-                    {"async": false, "type": "GET"}).responseText;
+            xslString = __html__['public_html/qunit/transform/test_transform.xsl'];
             transformedHTML = $.parseHTML(jsxml.transReady(sampleDoc, xslString));
-
+            $(":root").append(transformedHTML);
 
 
         }
 
     }
-    QUnit.module("xslt_tests.js xslt simple tests", {
+    QUnit.module("document_tests.js karma document tests", {
         beforeEach: function (assert) {
-             
+
             getSample(assert);
 
 
@@ -57,24 +55,28 @@ $(function () {
         }
     });
 
-     QUnit.test('test load of sample xml by null', function (assert) {
+    QUnit.test('null check function', function (assert) {
 
-         assert.testNull(sampleDoc, false);
-         assert.testNull(sampleXML, false);
-         assert.testNull(testNull, true);
-         assert.testNull(testUndef, true);
-         assert.testNull(xslString, false);
+        assert.testNull(sampleDoc, false);
+        assert.testNull(sampleXML, false);
+        assert.testNull(testNull, true);
+        assert.testNull(testUndef, true);
+        assert.testNull(xslString, false);
 
     });
 
-     QUnit.test('test load of sample by string', function (assert) {
+    QUnit.test('test __html__ var load', function (assert) {
 
-        var sText = jsxml.toXml(sampleDoc);
-        assert.equal(sText, sampleXML);
+        
+        
+        //console.log(Object.keys(__html__));
+        assert.ok(true);
+        assert.equal(Object.keys(__html__).length,2);
+
     });
 
 
-     QUnit.test('xsl worked', function (assert) {
+    QUnit.test('xsl worked', function (assert) {
 
         setData();
         var text = $("#gamma").text();
