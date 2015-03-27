@@ -27,7 +27,7 @@ $(function () {
         return this.x;
     };
 
-    module("jsobj_tests.js javascript objects", {
+    module("jsobj_tests.js javascript object tests without DOM", {
         setup: function () {
             // console.log("in setup for js obj");
         },

@@ -15,9 +15,10 @@ module.exports = function (config) {
             'public_html/js/jquery/dist/jquery.js',
             'public_html/js/jsxml.js',
             'public_html/karma/tests/**_tests.js',
-             'public_html/qunit/transform/test_transform.xsl' ,
-             'public_html/qunit/transform/test.xml'     
-         ],
+            'public_html/qunit/transform/test_transform.xsl',
+            'public_html/karma/templates/a1.html',
+            'public_html/qunit/transform/test.xml'
+        ],
         htmlReporter: {
             outputDir: 'karma_html', // where to put the reports  
             templatePath: null, // set if you moved jasmine_template.html 
@@ -35,15 +36,32 @@ module.exports = function (config) {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             '**/*.html': ['html2js'],
-            '**/*.xslt': ['html2js'], 
-            '**/*.xml': ['html2js'], 
+            '**/*.xslt': ['html2js'],
+            '**/*.xml': ['html2js'],
             '**/*.xsl': ['html2js'],
             '**/*.js': ['coverage']
+        },
+        junitReporter: {
+            outputFile: 'junit/test-results.xml',
+            suite: 'bonzo'
+        },
+        coverageReporter: {
+            reporters: [{
+                    type: 'cobertura',
+                    dir: 'coverage/',
+                    subdir: 'chrome',
+                    file: 'chrome.xml'
+                }, {
+                    type: 'json',
+                    dir: 'coverage/',
+                    subdir: 'json',
+                    file: 'coverage.json'
+        }]
         },
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress', 'coverage', 'html'],
+        reporters: ['progress', 'coverage', 'html', 'dots', 'junit'],
         // web server port
         port: 9876,
         // enable / disable colors in the output (reporters and logs)
@@ -51,7 +69,6 @@ module.exports = function (config) {
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_DEBUG,
-        
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         //browsers: ['PhantomJS'],

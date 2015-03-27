@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 41.0.2272 (Mac OS X 10.8.5)" package="bonzo" timestamp="2015-03-27T13:58:51" id="0" hostname="ni-dhenton.local" tests="10" errors="0" failures="0" time="0.138">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.104 Safari/537.36"/>
+    </properties>
+    <testcase name="null check function" time="0.011" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).document_tests_js Karma QUnit Document Environment Tests"/>
+    <testcase name="test __html__ var load for fixtures" time="0.004" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).document_tests_js Karma QUnit Document Environment Tests"/>
+    <testcase name="xsl worked" time="0.002" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).document_tests_js Karma QUnit Document Environment Tests"/>
+    <testcase name="append a template" time="0.002" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).fixture_tests_js fixture usuage tests"/>
+    <testcase name="test init values" time="0" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).jsobj_tests_js javascript object tests without DOM"/>
+    <testcase name="test mutators" time="0.001" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).jsobj_tests_js javascript object tests without DOM"/>
+    <testcase name="onetest" time="0" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).qunit-context_tests_js Various QUnit Demo Tests eg, contexts, async"/>
+    <testcase name="twotest" time="0.001" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).qunit-context_tests_js Various QUnit Demo Tests eg, contexts, async"/>
+    <testcase name="threetest" time="0" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).qunit-context_tests_js Various QUnit Demo Tests eg, contexts, async"/>
+    <testcase name="asynctest" time="0.117" classname="bonzo Chrome 41.0.2272 (Mac OS X 10.8.5).qunit-context_tests_js Various QUnit Demo Tests eg, contexts, async"/>
+    <system-out><![CDATA[
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>

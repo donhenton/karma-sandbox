@@ -21,11 +21,12 @@ $(function () {
     var testUndef = undefined;
     var xslString = null;
     var transformedHTML = null;
+    var fixtureId = "fixtureId";
 
 
     function setData()
     {
-        $("#qunit-fixture").append(transformedHTML);
+        $("#"+fixtureId).append(transformedHTML);
     }
     function getSample(assert)
     {
@@ -37,22 +38,27 @@ $(function () {
             sampleDoc = jsxml.fromString(sampleXML);
             xslString = __html__['public_html/qunit/transform/test_transform.xsl'];
             transformedHTML = $.parseHTML(jsxml.transReady(sampleDoc, xslString));
-             $("body").prepend("<div id='qunit-fixture'></div>");
+            
             //setData();
             //console.log($(":root").html());
 
         }
 
     }
-    QUnit.module("document_tests.js karma document tests", {
+    /**
+     * all tests after this call are in this module. Another call to 
+     * module will start a new module
+     * 
+     */
+    QUnit.module("document_tests.js Karma QUnit Document Environment Tests", {
         beforeEach: function (assert) {
-
+            $("body").prepend("<div id='"+fixtureId+"'></div>");
             getSample(assert);
 
 
         },
         afterEach: function (assert) {
-
+            $("#"+fixtureId).remove();
         }
     });
 
@@ -65,14 +71,14 @@ $(function () {
         assert.testNull(xslString, false);
 
     });
-
-    QUnit.test('test __html__ var load', function (assert) {
+ 
+    QUnit.test('test __html__ var load for fixtures', function (assert) {
 
         
         
         //console.log(Object.keys(__html__));
         assert.ok(true);
-        assert.equal(Object.keys(__html__).length,2);
+        assert.equal(Object.keys(__html__).length,3);
 
     });
 
@@ -86,7 +92,7 @@ $(function () {
     });
 
 
-
+ 
 
 
 });
