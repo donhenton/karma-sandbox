@@ -20,17 +20,8 @@ module.exports = function (config) {
             'public_html/qunit/transform/test.xml'
         ],
         htmlReporter: {
-            outputDir: 'karma_html', // where to put the reports  
-            templatePath: null, // set if you moved jasmine_template.html 
-            focusOnFailures: false, // reports show failures on start 
-            namedFiles: false, // name files instead of creating sub-directories 
-            pageTitle: "geta job", // page title for reports; browser info by default 
-            urlFriendlyName: true, // simply replaces spaces with _ for files/dirs 
-
-
-            // experimental 
-            preserveDescribeNesting: false, // folded suites stay folded  
-            foldAll: false  // reports start folded (only with preserveDescribeNesting) 
+            outputFile: 'html_out/units.html' 
+ 
         },
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
