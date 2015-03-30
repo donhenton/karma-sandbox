@@ -44,7 +44,7 @@ module.exports = function (config) {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             
-            //if this add been htmljs the file would be processed and available
+            //if these had been 'htmljs' the file would be processed and available
             //in the __html__ global hashmap
             //however IT MUST BE COMPATIBABLE WITH JS, ie no '//' included
             
