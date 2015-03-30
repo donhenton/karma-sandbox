@@ -27,7 +27,7 @@ XTree = {
         XTree.params.urlBase = settings.urlBase != null ?
                 settings.urlBase : ""; // no ending slash
         XTree.createNewTree();
-        console.log("##### "+XTree.params.transformBase + "transform.xslt");
+        //console.log("##### "+XTree.params.transformBase + "transform.xslt");
         XTree.xsl = $.ajax(XTree.params.transformBase + "transform.xslt", {"async": false, "type": "GET"}).responseText;
 
     },
@@ -226,7 +226,7 @@ XTree = {
      */
     selectItem: function(level, id)
     {
-        console.log("selectItem1 id " + id + " level " + level);
+        //console.log("selectItem1 id " + id + " level " + level);
         var clickedNode = XTree.findLevel(level, id);
         var clickedStatus = clickedNode.getAttribute("checked");
         var newStatus = "yes";
@@ -249,7 +249,7 @@ XTree = {
      */
     openFolder: function(level, id)
     {
-        console.log("openFolder id " + id + " level " + level);
+        //console.log("openFolder id " + id + " level " + level);
         var node = XTree.findLevel(level, id);
         var newLevel = level + 1;
         var folderStatus = node.getAttribute("folder");

@@ -6,15 +6,16 @@ function getSample()
 {
     if (sampleXML == null)
     {
-        xr = $.ajax("sample.xml", {async: false});
+        xr = $.ajax("/base/public_html/tree_tests/sample.xml", {async: false});
         sampleXML = xr.responseText;
+       // console.log("SAMPLE "+sampleXML);
     }
     return sampleXML;
 }
 
 var initSettings = {
     "attachmentPoint": "qunit-fixture",
-    "transformBase": "transforms/",
+    "transformBase": "/base/public_html/tree_tests/transforms/",
     "urlBase": "alpha"};
 
 $(function() {
@@ -34,14 +35,14 @@ $(function() {
     });
 
     test('test parameters', function() {
-        settings = {"urlBase": "localhost", "attachmentPoint": "alpha","transformBase": "transforms/"}
+        settings = {"urlBase": "localhost", "attachmentPoint": "alpha", "transformBase": "/base/public_html/tree_tests/transforms/"}
         XTree.init(settings);
         //alert(XTree.params);
         equal(XTree.params.attachmentPoint, settings.attachmentPoint);
         equal(XTree.params.urlBase, settings.urlBase);
     });
     test('test parameter defaults', function() {
-        settings = {"transformBase": "transforms/"}
+        settings = { "transformBase": "/base/public_html/tree_tests/transforms/",}
         XTree.init(settings);
         //alert(XTree.params);
         equal(XTree.params.attachmentPoint, "body");

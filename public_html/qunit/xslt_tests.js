@@ -31,12 +31,12 @@ $(function () {
     {
         if (sampleXML === null)
         {
-            var xr = $.ajax("qunit/transform/test.xml", {async: false});
+            var xr = $.ajax("transform/test.xml", {async: false});
             sampleXML = xr.responseText;
             //not found if it can't be loaded
             assert.ok("NOT FOUND" !== sampleXML);
             sampleDoc = jsxml.fromString(sampleXML);
-            xslString = $.ajax("qunit/transform/test_transform.xsl",
+            xslString = $.ajax("transform/test_transform.xsl",
                     {"async": false, "type": "GET"}).responseText;
             transformedHTML = $.parseHTML(jsxml.transReady(sampleDoc, xslString));
 

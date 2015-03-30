@@ -40,10 +40,10 @@ function areAllChildrenChecked(levelNum, id) {
 }
 
 // ///// testing helper functions /////////////////////
-
+ 
 function getHtmlSample() {
 	if (sampleHTML == null) {
-		xr = $.ajax("sample.html", {
+		xr = $.ajax("/base/public_html/tree_tests/sample.html", {
 			"async" : false,
 			"type" : "GET",
 			"error" : function(xr, status, err) {
@@ -60,6 +60,7 @@ $(function() {
 	module("xtext_html.js basic sample DOM Tests", {
 		setup : function() {
 			// console.log("in setup for xtree dom");
+                        $("body").prepend("<div id='qunit-fixture'></div>");
 			$('#qunit-fixture').append(getHtmlSample());
 
 		},
@@ -67,7 +68,14 @@ $(function() {
 			// console.log("in teardown for xtree dom");
 		}
 	});
+        
+        test('test', function(assert) {
 
+		 assert.ok(true)
+
+	});
+        
+ 
 	test('test replacing HTML', function() {
 
 		// console.log($('#qunit-fixture').html())
@@ -83,7 +91,7 @@ $(function() {
 		setup : function() {
 			XTree.init({
 				"attachmentPoint" : 'qunit-fixture',
-                                "transformBase" : "transforms/",
+                                "transformBase": "/base/public_html/tree_tests/transforms/",
 				"urlBase" : "alpha"
 			});
 			XTree.getLevel1DataForGroup(3);
@@ -129,5 +137,5 @@ $(function() {
 		}, 1000);
 
 	});
-
+ 
 });// end jquery start function
