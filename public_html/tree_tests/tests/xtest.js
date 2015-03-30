@@ -1,3 +1,5 @@
+/* global jsxml, XTree */
+
 //Tests for xtree
 
 var simpleXML = "<tree><level1 name=\"fred\" id=\"1\"></level1></tree>";
@@ -146,7 +148,21 @@ $(function() {
         }
 
         equal(caughtError, true, "can only add 1,2,3");
+        
+        
+         caughtError = false;
+        try
+        {
+            XTree.appendChildLevel(oneNode, -1, 1004, "bonzo");
+        }
+        catch (e)
+        {
+            caughtError = true;
+        }
 
+        equal(caughtError, true, "can only add 1,2,3");
+        
+   
     });
     test("xpath basics", function()
     {
@@ -189,8 +205,17 @@ $(function() {
 
     });
 
+    test("test toString", function(assert)
+    {
+        var t = getSample();
+         
+        XTree.tree = jsxml.fromString(t);
+         
+        assert.ok(XTree.toString().indexOf("xml")>0);
 
 
+    });
+    
 
 });
 

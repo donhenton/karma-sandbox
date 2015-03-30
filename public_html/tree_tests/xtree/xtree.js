@@ -136,7 +136,7 @@ XTree = {
      */
     appendChildLevel: function(parentNode, levelNumber, id, name)
     {
-        if (levelNumber < 2 && levelNumber > 3)
+        if (levelNumber < 2 || levelNumber > 3)
         {
             throw "child levels allowed: 2 and 3 only";
         }
