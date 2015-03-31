@@ -62,17 +62,20 @@
 		visitSubscribers : function(action, arg, type) {
 			var pubtype = type || 'any'; 
 			var  subscribers = this.subscribers[pubtype];
+                        
 			var i;
 			if (typeof subscribers === "undefined")
 				return; 
-			max = subscribers.length;
+			var max = subscribers.length;
 
 			for (i = 0; i < max; i += 1) {
 				if (action === 'raiseEvent') {
 					subscribers[i](arg);
 				} else {
 					// this is the unsubscribe block
+                                        
 					if (subscribers[i] === arg) {
+                                            //console.log("action '"+action+"' sub '"+subscribers[i]+"' arg '"+arg+"'")
 						subscribers.splice(i, 1);
 					}
 				}
