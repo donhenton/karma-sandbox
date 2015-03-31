@@ -70,11 +70,7 @@ $(function () {
         }
     });
 
-    test('test', function (assert) {
-
-        assert.ok(true)
-
-    });
+    
 
 
     test('test replacing HTML', function () {
