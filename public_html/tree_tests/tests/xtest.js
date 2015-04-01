@@ -47,6 +47,7 @@ $(function() {
         settings = { "transformBase": "/base/public_html/tree_tests/transforms/",}
         XTree.init(settings);
         //alert(XTree.params);
+        //console.log("11111111 "+XTree.params.attachmentPoint);
         equal(XTree.params.attachmentPoint, "body");
         equal(XTree.params.urlBase, "");
     });

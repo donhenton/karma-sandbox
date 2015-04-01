@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+/* global jsxml, XPathResult, XTREE_LISTENERS, MESSAGE_PUMP */
+
 //XTree = [];
 
 XTree = {
@@ -11,6 +13,32 @@ XTree = {
     tree: undefined,
     xsl: "",
     groupId: 0,
+    
+    
+    checkIsNull: function(item)
+    {
+        var typeValue = (typeof item);
+        if (typeValue === 'undefined')
+        {
+            return false;
+        }
+        if (item === null)
+        {
+            return false;
+        }
+        if (typeValue === 'string')
+        {
+            if (item.trim().length === 0)
+            {
+                return false;
+            }
+        }
+        return true;
+         
+       
+    },
+    
+    
     /**
      * initialize the XTree object with needed one time parameters
      * @param {type} settings
@@ -18,13 +46,13 @@ XTree = {
      */
     init: function(settings)
     {
-        XTree.params.attachmentPoint = settings.attachmentPoint != null ?
+        XTree.params.attachmentPoint = this.checkIsNull(settings.attachmentPoint) ?
                 settings.attachmentPoint : "body";
 
-        XTree.params.transformBase = settings.transformBase != null ?
+        XTree.params.transformBase = this.checkIsNull(settings.transformBase) ?
                 settings.transformBase : "";
 
-        XTree.params.urlBase = settings.urlBase != null ?
+        XTree.params.urlBase = this.checkIsNull(settings.urlBase) ?
                 settings.urlBase : ""; // no ending slash
         XTree.createNewTree();
         //console.log("##### "+XTree.params.transformBase + "transform.xslt");
@@ -72,7 +100,7 @@ XTree = {
         
         $.getJSON(url, null, function(jsonItems) {
 
-            if (typeof jsonItems != "undefined")
+            if (typeof jsonItems !== "undefined")
             {
                 for (var i = 0; i < jsonItems.length; i++)
                 {
@@ -150,16 +178,16 @@ XTree = {
         	parentLevel = parentNode.nodeName;
         }
         
-        if (parentLevel == "level1" && levelNumber != 2)
+        if (parentLevel === "level1" && levelNumber !== 2)
         {
             throw "level1  can only have level2 children";
         }
 
-        if (parentLevel == "level2" && levelNumber != 3)
+        if (parentLevel === "level2" && levelNumber !== 3)
         {
             throw "level2  can only have level3 children";
         }
-        if (parentLevel == "level3")
+        if (parentLevel === "level3")
         {
             throw "level3  can not have children";
         }
@@ -230,7 +258,7 @@ XTree = {
         var clickedNode = XTree.findLevel(level, id);
         var clickedStatus = clickedNode.getAttribute("checked");
         var newStatus = "yes";
-        if (typeof clickedStatus == undefined || clickedStatus == "no")
+        if (typeof clickedStatus === undefined || clickedStatus === "no")
         {
             newStatus = "yes";
         }
@@ -253,23 +281,24 @@ XTree = {
         var node = XTree.findLevel(level, id);
         var newLevel = level + 1;
         var folderStatus = node.getAttribute("folder");
-        if (folderStatus == "open")
+        var i = 0;
+        if (folderStatus === "open")
         {
             node.setAttribute("folder", "closed");
-            for (var i = 0; i < node.childNodes.length; i++)
+            for (i = 0; i < node.childNodes.length; i++)
             {
                 node.childNodes[i].setAttribute("visible", "no");
             }
         }
         else
         {
-            if (node.childNodes.length == 0)
+            if (node.childNodes.length === 0)
             {
                 XTree.getLevelDataForLevelAndGroupAndId(newLevel, XTree.groupId, id);
             }
             else
             {
-                for (var i = 0; i < node.childNodes.length; i++)
+                for (i = 0; i < node.childNodes.length; i++)
                 {
                     node.childNodes[i].setAttribute("visible", "yes");
                 }

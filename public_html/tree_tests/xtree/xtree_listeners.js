@@ -1,10 +1,11 @@
+/* global jsxml, XTree */
+
 XTREE_LISTENERS = {
     ON_REFRESH_EVENT: "ON_REFRESH",
     transformBase: "",
     list_xsl: null,
     init: function () {
-        var xslUrl = XTREE_LISTENERS.transformBase
-                + "list_transform.xslt";
+        var xslUrl = XTREE_LISTENERS.transformBase + "list_transform.xslt";
         //console.log(xslUrl)
         XTREE_LISTENERS.list_xsl = $.ajax(xslUrl, {
             "async": false,
