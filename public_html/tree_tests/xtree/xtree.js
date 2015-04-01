@@ -279,6 +279,10 @@ XTree = {
     {
         //console.log("openFolder id " + id + " level " + level);
         var node = XTree.findLevel(level, id);
+        if (node === null)
+        {
+            return;
+        }
         var newLevel = level + 1;
         var folderStatus = node.getAttribute("folder");
         var i = 0;

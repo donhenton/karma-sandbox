@@ -1,3 +1,5 @@
+/* global XTree */
+
 var htmlSettings = {
     "attachmentPoint": "qunit-fixture",
     "urlBase": "alpha"
@@ -8,17 +10,17 @@ var simpleXML = "";
 // ////// testing helper functions ////////////////////
 
 function getText(levelNum, id) {
-    selector = "#level_" + levelNum + "_name_" + id;
+    var selector = "#level_" + levelNum + "_name_" + id;
     return $(selector).text();
 }
 
 function isChecked(levelNum, id) {
-    selector = "#level_" + levelNum + "_" + id;
+    var selector = "#level_" + levelNum + "_" + id;
     return $(selector).children('input').is(':checked');
 }
 
 function openFolder(levelNum, id) {
-    selector = "#level_" + levelNum + "_" + id + " .indicator";
+    var selector = "#level_" + levelNum + "_" + id + " .indicator";
     return $(selector).click();
 }
 
@@ -28,9 +30,9 @@ function clickBox(levelNum, id) {
 }
 function areAllChildrenChecked(levelNum, id) {
     selector = "#level_" + levelNum + "_" + id;
-    uC = $(selector).children('ul').children('li').children('input');
-    checkCount = 0;
-    for (i = 0; i < uC.length; i++) {
+    var uC = $(selector).children('ul').children('li').children('input');
+    var checkCount = 0;
+    for (var i = 0; i < uC.length; i++) {
         if ($(uC[i]).is(':checked')) {
             checkCount++;
         }
@@ -42,8 +44,8 @@ function areAllChildrenChecked(levelNum, id) {
 // ///// testing helper functions /////////////////////
 
 function getHtmlSample() {
-    if (sampleHTML == null) {
-        xr = $.ajax("/base/public_html/tree_tests/sample.html", {
+    if (sampleHTML === null) {
+        var xr = $.ajax("/base/public_html/tree_tests/sample.html", {
             "async": false,
             "type": "GET",
             "error": function (xr, status, err) {
@@ -70,7 +72,7 @@ $(function () {
         }
     });
 
-    
+
 
 
     test('test replacing HTML', function () {
@@ -106,7 +108,7 @@ $(function () {
     // getJSON, so its async
     // http://lostechies.com/chadmyers/2008/12/22/asynchronous-javascript-testing-with-qunit/
 
-    asyncTest('click works for tree', function () {
+    asyncTest('click works for tree when not initially checked', function () {
 
         setTimeout(function () {
             clickBox(1, 22);
@@ -115,6 +117,15 @@ $(function () {
             // html changed
             equal(isChecked(1, 22), true);
             openFolder(1, 22);
+
+
+            clickBox(1, 22);
+            equal(XTree.findLevel(1, 22).getAttribute("checked"), 'no');
+            // html changed
+            equal(isChecked(1, 22), false);
+             
+             openFolder(9,999)
+
             start();
 
         }, 1000);

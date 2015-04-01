@@ -10,7 +10,7 @@ function getSample()
     {
         xr = $.ajax("/base/public_html/tree_tests/sample.xml", {async: false});
         sampleXML = xr.responseText;
-       // console.log("SAMPLE "+sampleXML);
+        // console.log("SAMPLE "+sampleXML);
     }
     return sampleXML;
 }
@@ -20,31 +20,42 @@ var initSettings = {
     "transformBase": "/base/public_html/tree_tests/transforms/",
     "urlBase": "alpha"};
 
-$(function() {
+$(function () {
 
     QUnit.config.testTimeout = 5000;
 
 
     module("xtest.js tests", {
-        setup: function() {
+        setup: function () {
             //console.log("in setup for xtree");
             XTree.init(initSettings);
 
         },
-        teardown: function() {
+        teardown: function () {
             //console.log("in teardown for xtree");
         }
     });
 
-    test('test parameters', function() {
+    test('test checkIsNull', function (assert) {
+
+        assert.ok(!XTree.checkIsNull(null));
+        assert.ok(!XTree.checkIsNull(" "));
+        assert.ok(!XTree.checkIsNull(""));
+        assert.ok(!XTree.checkIsNull(undefined));
+        assert.ok(XTree.checkIsNull(35));
+        assert.ok(XTree.checkIsNull("ggg"));
+
+
+    });
+    test('test parameters', function () {
         settings = {"urlBase": "localhost", "attachmentPoint": "alpha", "transformBase": "/base/public_html/tree_tests/transforms/"}
         XTree.init(settings);
         //alert(XTree.params);
         equal(XTree.params.attachmentPoint, settings.attachmentPoint);
         equal(XTree.params.urlBase, settings.urlBase);
     });
-    test('test parameter defaults', function() {
-        settings = { "transformBase": "/base/public_html/tree_tests/transforms/",}
+    test('test parameter defaults', function () {
+        settings = {"transformBase": "/base/public_html/tree_tests/transforms/", }
         XTree.init(settings);
         //alert(XTree.params);
         //console.log("11111111 "+XTree.params.attachmentPoint);
@@ -54,7 +65,7 @@ $(function() {
 
 
 
-    test("test teardown", function()
+    test("test teardown", function ()
     {
 
         $('qunit-fixture').append("fix");
@@ -62,7 +73,7 @@ $(function() {
         equal($('qunit-fixture').text(), "")
     });
 
-    test("test teardown no bleed", function()
+    test("test teardown no bleed", function ()
     {
 
         $('qunit-fixture').append("get a job");
@@ -71,7 +82,7 @@ $(function() {
     });
 
 
-    test("test tree root", function()
+    test("test tree root", function ()
     {
         settings = {};
         XTree.init(settings);
@@ -79,7 +90,7 @@ $(function() {
 
     });
 
-    test("test level1 append", function()
+    test("test level1 append", function ()
     {
         settings = {};
         XTree.init(settings);
@@ -93,7 +104,23 @@ $(function() {
 
     });
 
-    test("test child appends", function()
+
+    test("test child appends with default", function (assert)
+    {
+        settings = {};
+        XTree.init(settings);
+         
+        try {
+            twoNode = XTree.appendChildLevel(null, 2, 1004, "bonzo");
+        }
+        catch (e)
+        {
+            caughtError = true;
+        }
+        assert.equal(caughtError, true);
+    });
+
+    test("test child appends", function ()
     {
         settings = {};
         XTree.init(settings);
@@ -149,9 +176,9 @@ $(function() {
         }
 
         equal(caughtError, true, "can only add 1,2,3");
-        
-        
-         caughtError = false;
+
+
+        caughtError = false;
         try
         {
             XTree.appendChildLevel(oneNode, -1, 1004, "bonzo");
@@ -162,10 +189,10 @@ $(function() {
         }
 
         equal(caughtError, true, "can only add 1,2,3");
-        
-   
+
+
     });
-    test("xpath basics", function()
+    test("xpath basics", function ()
     {
 
         sampleDoc = jsxml.fromString(getSample());
@@ -193,7 +220,7 @@ $(function() {
 
     });
 
-    test("test find level", function()
+    test("test find level", function ()
     {
         XTree.tree = jsxml.fromString(getSample());
         var node1 = XTree.findLevel(1, 4001);
@@ -206,17 +233,17 @@ $(function() {
 
     });
 
-    test("test toString", function(assert)
+    test("test toString", function (assert)
     {
         var t = getSample();
-         
+
         XTree.tree = jsxml.fromString(t);
-         
-        assert.ok(XTree.toString().indexOf("xml")>0);
+
+        assert.ok(XTree.toString().indexOf("xml") > 0);
 
 
     });
-    
+
 
 });
 
