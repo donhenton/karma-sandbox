@@ -1,11 +1,11 @@
-if (typeof NS == 'undefined') { NS = {}; }
+if (typeof NS === 'undefined') { NS = {}; }
 
 NS.myFunction = {
     //empty stuff array, filled during initialization
       stuff: [],
 
     init: function init() {
-        console.log("xxxxx "+this.toString())
+        console.log("xxxxx "+this.toString());
         this.stuff.push('Testing');
     },
     reset: function reset() {

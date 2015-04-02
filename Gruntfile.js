@@ -5,7 +5,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         jshint: {
-            files: ['public_html/tree_tests/xtree/*.js'],
+            files: ['public_html/tree_tests/xtree/*.js','public_html/jasmine/code'],
             options: {
                 reporter: require('jshint-html-reporter'),
                 reporterOutput: 'jshint-report.html',
