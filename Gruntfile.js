@@ -26,6 +26,10 @@ module.exports = function (grunt) {
             xtree: {
                 configFile: 'public_html/tree_tests/conf/xtree.karma.conf.js',
                 singleRun: true
+            },
+             jasmine: {
+                configFile: 'public_html/jasmine/conf/jasmine.conf.js',
+                singleRun: true
             }
         }
 
@@ -41,6 +45,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('runtest', ['karma:test']);
     grunt.registerTask('runxtree', ['karma:xtree']);
+    grunt.registerTask('runjsamine', ['karma:jasmine']);
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jshint');
 };

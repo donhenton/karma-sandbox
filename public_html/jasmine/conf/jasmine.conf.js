@@ -9,45 +9,39 @@ module.exports = function (config) {
         autoWatch: false,
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['qunit'],
+        frameworks: ['jasmine'],
         // list of files / patterns to load in the browser
         files: [
             'public_html/js/jquery/dist/jquery.js',
-            'public_html/js/jsxml.js',
-            'public_html/karma/tests/**_tests.js',
-            'public_html/qunit/transform/test_transform.xsl',
-            'public_html/karma/templates/a1.html',
-            'public_html/qunit/transform/test.xml'
+            'public_html/jasmine/code/*.js',
+            'public_html/jasmine/tests/**tests.js'
+
         ],
         htmlReporter: {
-            outputFile: 'html_out/units.html' 
- 
+            outputFile: 'html_out/jasmine_units.html'
+
         },
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            '**/*.html': ['html2js'],
-            '**/*.xslt': ['html2js'],
-            '**/*.xml': ['html2js'],
-            '**/*.xsl': ['html2js'],
             '**/*.js': ['coverage']
         },
         junitReporter: {
-            outputFile: 'junit/test-results.xml',
-            suite: 'bonzo'
+            outputFile: 'junit/jasmine-test-results.xml',
+            suite: 'Jasmine Tests'
         },
         coverageReporter: {
             reporters: [{
                     type: 'cobertura',
                     dir: 'coverage/',
                     subdir: 'chrome',
-                    file: 'chrome.xml'
+                    file: 'jasmine-chrome.xml'
                 }, {
                     type: 'json',
                     dir: 'coverage/',
                     subdir: 'json',
-                    file: 'coverage.json'
-        }]
+                    file: 'jasmine-coverage.json'
+                }]
         },
         // test results reporter to use
         // possible values: 'dots', 'progress'
@@ -60,10 +54,12 @@ module.exports = function (config) {
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_DEBUG,
+        // If browser does not capture in given timeout [ms], kill it
+        captureTimeout: 60000,
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         //browsers: ['PhantomJS'],
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
         singleRun: true
