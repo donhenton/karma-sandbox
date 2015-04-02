@@ -24,14 +24,23 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            '**/*.js': ['coverage']
+             'public_html/jasmine/code/*.js': ['coverage']
         },
         junitReporter: {
             outputFile: 'junit/jasmine-test-results.xml',
             suite: 'Jasmine Tests'
         },
         coverageReporter: {
-            reporters: [{
+            reporters: [
+                  {
+                    type: 'html',
+                    dir: 'html_coverage/',
+                    subdir: 'jasmine-chrome',
+                    file: 'jasmine-chrome.xml'
+                }, 
+                
+                
+                {
                     type: 'cobertura',
                     dir: 'coverage/',
                     subdir: 'chrome',
