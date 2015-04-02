@@ -1,5 +1,5 @@
 /* global expect, spyOn, NS */
-//http://jasmine.github.io/2.0/introduction.html
+//http://jasmine.github.io/2.2/introduction.html
 describe("alpha_tests.js", function () {
 
 
