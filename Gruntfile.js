@@ -56,6 +56,7 @@ module.exports = function (grunt) {
     grunt.registerTask('runjsamine', ['karma:jasmine']);
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.registerTask('runalltests', ['karma:test','karma:xtree','karma:jasmine']);
 };
 
 

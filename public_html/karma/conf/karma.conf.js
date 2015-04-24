@@ -20,7 +20,7 @@ module.exports = function (config) {
             'public_html/qunit/transform/test.xml'
         ],
         htmlReporter: {
-            outputFile: 'html_out/units.html' 
+            outputFile: 'html_out/karma_unit_tests.html' 
  
         },
         // preprocess matching files before serving them to the browser
@@ -33,8 +33,8 @@ module.exports = function (config) {
             'public_html/karma/tests/**_tests.js': ['coverage']
         },
         junitReporter: {
-            outputFile: 'junit/test-results.xml',
-            suite: 'bonzo'
+            outputFile: 'junit/karma-test-results.xml',
+            suite: 'Karma Tests'
         },
         coverageReporter: {
             reporters: [
@@ -42,8 +42,7 @@ module.exports = function (config) {
                 {
                     type: 'html',
                     dir: 'html_coverage/',
-                    subdir: 'karma-chrome',
-                    file: 'karma-chrome.xml'
+                    subdir: 'karma-chrome' 
                 }, 
                 
                 
@@ -51,12 +50,12 @@ module.exports = function (config) {
                     type: 'cobertura',
                     dir: 'coverage/',
                     subdir: 'chrome',
-                    file: 'chrome.xml'
+                    file: 'karma-chrome.xml'
                 }, {
                     type: 'json',
                     dir: 'coverage/',
                     subdir: 'json',
-                    file: 'coverage.json'
+                    file: 'karma-coverage.json'
         }]
         },
         // test results reporter to use
@@ -69,7 +68,7 @@ module.exports = function (config) {
         colors: true,
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_DEBUG,
+        logLevel: config.LOG_WARN,
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         //browsers: ['PhantomJS'],

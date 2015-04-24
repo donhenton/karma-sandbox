@@ -18,7 +18,7 @@ module.exports = function (config) {
 
         ],
         htmlReporter: {
-            outputFile: 'html_out/jasmine_units.html'
+            outputFile: 'html_out/jasmine_unit_tests.html'
 
         },
         // preprocess matching files before serving them to the browser

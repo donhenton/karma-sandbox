@@ -37,7 +37,7 @@ module.exports = function (config) {
             
         ],
         htmlReporter: {
-            outputFile: 'html_out/units.html' 
+            outputFile: 'html_out/xtree_unit_tests.html' 
  
         },
         // preprocess matching files before serving them to the browser
@@ -55,8 +55,8 @@ module.exports = function (config) {
             'public_html/tree_tests/xtree/*.js': ['coverage']
         },
         junitReporter: {
-            outputFile: 'junit/test-results.xml',
-            suite: 'Tree Tests'
+            outputFile: 'junit/xtree-test-results.xml',
+            suite: 'XTree Tests'
         },
         coverageReporter: {
             reporters: [
@@ -64,19 +64,19 @@ module.exports = function (config) {
                  {
                     type: 'html',
                     dir: 'html_coverage/',
-                    subdir: 'chrome',
-                    file: 'chrome.xml'
+                    subdir: 'xtree-chrome',
+                    file: 'xtree-chrome.xml'
                 }, 
                 {
                     type: 'cobertura',
                     dir: 'coverage/',
                     subdir: 'chrome',
-                    file: 'chrome.xml'
+                    file: 'xtree-chrome.xml'
                 }, {
                     type: 'json',
                     dir: 'coverage/',
                     subdir: 'json',
-                    file: 'coverage.json'
+                    file: 'xtree-coverage.json'
         }]
         },
         // test results reporter to use
