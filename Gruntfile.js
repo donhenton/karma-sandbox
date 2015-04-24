@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         
         
         jshint: {
-            files: ['public_html/tree_tests/xtree/*.js','public_html/jasmine/code'],
+            files: ['public_html/xtree/xtree/*.js','public_html/jasmine/code'],
             options: {
                 reporter: require('jshint-html-reporter'),
                 reporterOutput: 'jshint-report.html',
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
                 singleRun: true
             },
             xtree: {
-                configFile: 'public_html/tree_tests/conf/xtree.karma.conf.js',
+                configFile: 'public_html/xtree/conf/xtree.karma.conf.js',
                 singleRun: true
             },
              jasmine: {
@@ -56,7 +56,7 @@ module.exports = function (grunt) {
     grunt.registerTask('runjsamine', ['karma:jasmine']);
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.registerTask('runalltests', ['karma:test','karma:xtree','karma:jasmine']);
+    grunt.registerTask('runalltests', ['clean','karma:test','karma:xtree','karma:jasmine']);
 };
 
 

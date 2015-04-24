@@ -45,7 +45,7 @@ function areAllChildrenChecked(levelNum, id) {
 
 function getHtmlSample() {
     if (sampleHTML === null) {
-        var xr = $.ajax("/base/public_html/tree_tests/sample.html", {
+        var xr = $.ajax("/base/public_html/xtree/sample.html", {
             "async": false,
             "type": "GET",
             "error": function (xr, status, err) {
@@ -90,7 +90,7 @@ $(function () {
         setup: function () {
             XTree.init({
                 "attachmentPoint": 'qunit-fixture',
-                "transformBase": "/base/public_html/tree_tests/transforms/",
+                "transformBase": "/base/public_html/xtree/transforms/",
                 "urlBase": "alpha"
             });
             XTree.getLevel1DataForGroup(3);

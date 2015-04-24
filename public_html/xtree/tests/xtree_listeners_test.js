@@ -26,7 +26,7 @@ $(function () {
         $("body").prepend("<div id='selected_list_items'></div>");
         // $('#qunit-fixture').append(getHtmlSample());
         // console.log("\n\n\n\n\n"+$('body').html());
-        XTREE_LISTENERS.transformBase = BASE + "/tree_tests/transforms/";
+        XTREE_LISTENERS.transformBase = BASE + "/xtree/transforms/";
         XTREE_LISTENERS.init();
         XTree.tree = jsxml.fromString(getXML(filename));
     }
@@ -43,7 +43,7 @@ $(function () {
     var sampleXML = null;
     function getXML(filename) {
         if (sampleXML == null) {
-            xr = $.ajax(BASE + "/tree_tests/" + filename, {
+            xr = $.ajax(BASE + "/xtree/" + filename, {
                 "async": false,
                 "type": "GET",
                 "error": function (xr, status, err) {
@@ -87,12 +87,12 @@ $(function () {
         setup: function () {
             XTree.init({
                 "attachmentPoint": 'qunit-fixture',
-                "transformBase": BASE + "/tree_tests/transforms/",
+                "transformBase": BASE + "/xtree/transforms/",
                 "urlBase": "alpha"
             });
             XTree.getLevel1DataForGroup(3);
 
-            XTREE_LISTENERS.transformBase = BASE + "/tree_tests/transforms/";
+            XTREE_LISTENERS.transformBase = BASE + "/xtree/transforms/";
             XTREE_LISTENERS.init();
 
 
@@ -118,7 +118,7 @@ $(function () {
 
     module("xtree_listeners_test.js line ", {
         setup: function () {
-            XTREE_LISTENERS.transformBase = BASE + "/tree_tests/transforms/";
+            XTREE_LISTENERS.transformBase = BASE + "/xtree/transforms/";
             XTREE_LISTENERS.init();
             getXML("selection_sample.xml");
             $("body").prepend("<div id='selected_list_items'></div>");

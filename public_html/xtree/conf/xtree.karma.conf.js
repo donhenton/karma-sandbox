@@ -17,21 +17,21 @@ module.exports = function (config) {
             'public_html/js/json3/lib/json3.js',
             
             //code to cover
-            'public_html/tree_tests/xtree/*.js',
+            'public_html/xtree/xtree/*.js',
              
             
-            'public_html/tree_tests/jquery.mockjax.js',
-            'public_html/tree_tests/BeforeMock.js',
+            'public_html/xtree/jquery.mockjax.js',
+            'public_html/xtree/BeforeMock.js',
             
              //tests
-            'public_html/tree_tests/tests/*.js',
+            'public_html/xtree/tests/*.js',
             
             //handle oddball files they will be served but not processed
-             {pattern: 'public_html/tree_tests/**/*.xslt', 
+             {pattern: 'public_html/xtree/**/*.xslt', 
                  watched: false, included: false, served: true }  ,
-              {pattern: 'public_html/tree_tests/**/*.html', 
+              {pattern: 'public_html/xtree/**/*.html', 
                  watched: false, included: false, served: true }  ,
-             {pattern: 'public_html/tree_tests/**/*.xml', 
+             {pattern: 'public_html/xtree/**/*.xml', 
                  watched: false, included: false, served: true }  
             
             
@@ -52,7 +52,7 @@ module.exports = function (config) {
             //turn processing off
             '**/*.xslt': [],
             '**/*.xml': [],
-            'public_html/tree_tests/xtree/*.js': ['coverage']
+            'public_html/xtree/xtree/*.js': ['coverage']
         },
         junitReporter: {
             outputFile: 'junit/xtree-test-results.xml',
