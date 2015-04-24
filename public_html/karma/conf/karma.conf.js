@@ -30,14 +30,24 @@ module.exports = function (config) {
             '**/*.xslt': ['html2js'],
             '**/*.xml': ['html2js'],
             '**/*.xsl': ['html2js'],
-            '**/*.js': ['coverage']
+            'public_html/karma/tests/**_tests.js': ['coverage']
         },
         junitReporter: {
             outputFile: 'junit/test-results.xml',
             suite: 'bonzo'
         },
         coverageReporter: {
-            reporters: [{
+            reporters: [
+                
+                {
+                    type: 'html',
+                    dir: 'html_coverage/',
+                    subdir: 'karma-chrome',
+                    file: 'karma-chrome.xml'
+                }, 
+                
+                
+                {
                     type: 'cobertura',
                     dir: 'coverage/',
                     subdir: 'chrome',

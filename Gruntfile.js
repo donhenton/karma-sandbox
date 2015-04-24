@@ -4,6 +4,13 @@
 module.exports = function (grunt) {
 
     grunt.initConfig({
+        
+        clean: {
+            reports: ['coverage', 'html_coverage', 'html_out', 'junit']
+        },
+        
+        
+        
         jshint: {
             files: ['public_html/tree_tests/xtree/*.js','public_html/jasmine/code'],
             options: {
@@ -43,8 +50,9 @@ module.exports = function (grunt) {
 
 
 
-    grunt.registerTask('runtest', ['karma:test']);
+    grunt.registerTask('runkarma', ['karma:test']);
     grunt.registerTask('runxtree', ['karma:xtree']);
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.registerTask('runjsamine', ['karma:jasmine']);
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jshint');
