@@ -13,7 +13,7 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'public_html/js/jquery/dist/jquery.js',
-            'public_html/js/jsxml.js',
+            'public_html/qunit/jsxml.js',
             'public_html/karma/tests/**_tests.js',
             'public_html/qunit/transform/test_transform.xsl',
             'public_html/karma/templates/a1.html',

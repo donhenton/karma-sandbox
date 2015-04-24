@@ -13,7 +13,7 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'public_html/js/jquery/dist/jquery.js',
-            'public_html/js/jsxml.js',
+            'public_html/qunit/jsxml.js',
             'public_html/js/json3/lib/json3.js',
             
             //code to cover
