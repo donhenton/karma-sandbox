@@ -28,8 +28,8 @@ $(function () {
         //translate(20,0);
         var transformStr = href.attr("transform");
         var ret = transformStr.split("(");
-         
-        return parseInt(ret[1].split(",")[0]) + widthValue/ 2;
+
+        return parseInt(ret[1].split(",")[0]) + widthValue / 2;
     }
 
     function setCaliperLength()
@@ -41,7 +41,7 @@ $(function () {
         var href = $("rect#handleLeft");
         var w = parseInt(href.attr("width"));
         widthValue = w;
-        
+
 
     }
 
@@ -94,19 +94,81 @@ $(function () {
         var data = caliper.queryData();
         assert.equal(data.left.percent, 40);
         assert.equal(data.right.percent, 60);
-       
+
         assert.equal(data.left.x + widthValue / 2, getHandlePos("handleLeft"));
 
     });
-    
-     QUnit.test('simple mouse drag', function (assert) {
+
+    QUnit.test('simple mouse drag', function (assert) {
         // expect 40,60
-        var perChange = caliperLength/10;
+        var perChange = caliperLength / 10;
         $('rect#handleRight').simulate('drag', {'dx': perChange});
         var data = caliper.queryData();
-        assert.equal(data.right.percent, 70);       
+        assert.equal(data.right.percent, 70);
 
     });
+
+
+    QUnit.test('left cant go past right', function (assert) {
+        // expect 40,60
+        var perChange = 4 * caliperLength / 10;
+
+        $('rect#handleLeft').simulate('drag', {'dx': perChange});
+        //should be 80 if blocking didn't work
+        var data = caliper.queryData();
+        assert.equal(true, (data.left.percent - data.right.percent) < 1);
+
+    });
+
+    QUnit.test('right cant go past left', function (assert) {
+        // expect 40,60
+        var perChange = 4 * caliperLength / 10;
+
+        $('rect#handleRight').simulate('drag', {'dx': -perChange});
+        //should be 40 but it blocking didn't work
+        var data = caliper.queryData();
+        assert.equal(true, (data.left.percent - data.right.percent) < 1);
+
+    });
+
+    QUnit.test('test getPercentForPos', function (assert) {
+        // expect 40,60
+        var perChange = (4 * caliperLength / 10);
+        var s = caliper.getPercentForPos(perChange);
+        assert.equal(s, 41);
+
+        s = caliper.getPercentForPos(caliperLength * 2);
+        assert.equal(s, 100);
+        s = caliper.getPercentForPos(-5);
+        assert.equal(s, 0);
+
+    });
+
+    QUnit.test('test reposition', function (assert) {
+        // expect 40,60
+        var perChange = {"left": 35, "right": 75};
+        caliper.reposition(perChange);
+        var data = caliper.queryData();
+        assert.equal(data.left.percent, perChange.left);
+        assert.equal(data.right.percent, perChange.right);
+
+        var res = getHandlePos("handleLeft");
+        var testValue = res / caliperLength;
+        testValue = Math.round(testValue * 100)
+        assert.equal(testValue, perChange.left);
+
+        res = getHandlePos("handleRight");
+        testValue = (res) / caliperLength;
+        testValue = Math.round(testValue * 100)
+        assert.equal(testValue, perChange.right - 1);
+
+
+
+    });
+
+
+
+
 
 
 });
