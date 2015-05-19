@@ -94,8 +94,17 @@ $(function () {
         var data = caliper.queryData();
         assert.equal(data.left.percent, 40);
         assert.equal(data.right.percent, 60);
-        console.log(widthValue)
+       
         assert.equal(data.left.x + widthValue / 2, getHandlePos("handleLeft"));
+
+    });
+    
+     QUnit.test('simple mouse drag', function (assert) {
+        // expect 40,60
+        var perChange = caliperLength/10;
+        $('rect#handleRight').simulate('drag', {'dx': perChange});
+        var data = caliper.queryData();
+        assert.equal(data.right.percent, 70);       
 
     });
 
