@@ -197,9 +197,8 @@ d3.caliperAPI.init = function (initConditions)
             .on("drag", function (d, i) {
                 d.x += d3.event.dx
                 d.y = -handleSize/2;
-                // console.log(d3.select(this).attr("id"))
+                d3.select(this).attr("transform", positionBoxForX(d, this));
                 d.percent = getPercentForPos(d.x);
-                d3.select(this).attr("transform", positionBoxForX(d, this))
             });
 
 
