@@ -164,6 +164,19 @@ $(function () {
 
     });
 
+
+    QUnit.module("basic-caliper-tests.js caliper resize tests", {
+        beforeEach: function (assert) {
+
+            rundemo();
+            setCaliperLength();
+
+        },
+        afterEach: function (assert) {
+
+        }
+    });
+
     QUnit.test('test resize', function (assert) {
         caliper.resize(750);
         setCaliperLength();
@@ -173,13 +186,13 @@ $(function () {
         assert.equal(testValue, 40);
 
     });
-    
-     QUnit.test('test resize and move', function (assert) {
-         
-         var perChange = 5 * caliperLength / 10;
+
+    QUnit.test('test resize and move', function (assert) {
+
+        var perChange = 5 * caliperLength / 10;
 
         $('rect#handleRight').simulate('drag', {'dx': perChange});
-         
+
         //caliper.resize(750);
         //setCaliperLength();
         var res1 = getHandlePos("handleRight");
@@ -188,19 +201,19 @@ $(function () {
         assert.equal(testValue, 99);
         var data = caliper.queryData();
         assert.equal(data.right.percent, 100);
-        
+
         caliper.resize(750);
         setCaliperLength();
-        
-        
+
+
         var res2 = getHandlePos("handleRight");
         testValue = res2 / caliperLength;
         testValue = Math.round(testValue * 100);
         assert.equal(testValue, 99);
         data = caliper.queryData();
         assert.equal(data.right.percent, 100);
-        
-        assert.equal(true,res2 > res1);
+
+        assert.equal(true, res2 > res1);
     });
 
 });
