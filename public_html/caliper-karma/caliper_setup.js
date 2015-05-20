@@ -13,17 +13,21 @@ function rundemo()
 {
 
     var margin = {top: 25, right: 40, bottom: 50, left: 5};
-     
-    var height = 100;
-    var lineWidth = svgWidth-20;
 
+    var height = 100;
+    var lineWidth = svgWidth - 20;
+
+    $('body').empty();
+    $('body').append("<div id='qunit-fixture'></div>");
+    $("#qunit-fixture").append("<div id='graph'></div>");
+    $("#qunit-fixture").append("<div id='info'></div>");
 
     var initConditions = {};
 
-    var svg = d3.select("#qunit-fixture")
+    var svg = d3.select("#graph")
             .append("svg")
             .attr("height", height)
-            .attr("width", svgWidth );
+            .attr("width", svgWidth);
 
     initConditions.handleSize = 15;
     initConditions.initialPercents = [40, 60];

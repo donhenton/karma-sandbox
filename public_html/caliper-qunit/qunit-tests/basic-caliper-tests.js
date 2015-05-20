@@ -17,6 +17,12 @@ $(function () {
 
     var caliperLength = 0;
     var widthValue = 0;
+    
+    
+    function getInfoText()
+    {
+        return $("#info").text();
+    }
 
     function getHandlePos(handleId)
     {
@@ -58,7 +64,7 @@ $(function () {
 
     QUnit.test('caliper installed at fixture', function (assert) {
 
-        var text = $("#qunit-fixture").html();
+        var text = $("#graph").html();
         assert.equal(true, text.substring(1, 4) === 'svg');
 
     });
@@ -103,6 +109,8 @@ $(function () {
         $('rect#handleRight').simulate('drag', {'dx': perChange});
         var data = caliper.queryData();
         assert.equal(data.right.percent, 70);
+        
+        assert.equal(getInfoText(),'Percentages Left: 40 , Right: 70')
 
     });
 
@@ -141,6 +149,16 @@ $(function () {
         assert.equal(s, 0);
 
     });
+    
+    QUnit.test('test getPosForPercent', function (assert) {
+
+        var perChange = (4 * caliperLength / 10);
+        var s = caliper.getPosForPercent(40);
+        assert.equal(true,Math.abs(perChange-widthValue/2)-s<2);
+
+    });
+    
+    
 
     QUnit.test('test reposition', function (assert) {
         // expect 40,60
