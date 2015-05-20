@@ -58,7 +58,7 @@ $(function () {
 
     QUnit.test('caliper installed at fixture', function (assert) {
 
-        var text = $("#qunit-fixture").html();
+        var text = $("#graph").html();
         assert.equal(true, text.substring(1, 4) === 'svg');
 
     });
@@ -141,6 +141,15 @@ $(function () {
         assert.equal(s, 0);
 
     });
+    
+    QUnit.test('test getPosForPercent', function (assert) {
+
+        var perChange = (4 * caliperLength / 10);
+        var s = caliper.getPosForPercent(40);
+        assert.equal(true,Math.abs(perChange-widthValue/2)-s<2);
+
+    });
+    
 
     QUnit.test('test reposition', function (assert) {
         // expect 40,60

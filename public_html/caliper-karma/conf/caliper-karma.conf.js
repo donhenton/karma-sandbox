@@ -36,7 +36,7 @@ basePath: '../../..',
         preprocessors: {
         '**/*.html': ['html2js'],
                 
-                'public_html/caliper-karma/tests/**_tests.js': ['coverage']
+                'public_html/caliper-karma/caliper1.js': ['coverage']
         },
         junitReporter: {
         outputFile: 'junit/caliper-karma-test-results.xml',

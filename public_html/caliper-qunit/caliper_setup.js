@@ -16,11 +16,16 @@ function rundemo()
      
     var height = 100;
     var lineWidth = svgWidth-20;
+    
+    
+    $("#qunit-fixture").append("<div id='graph'></div>");
+    $("#qunit-fixture").append("<div id='info'></div>");
+    
 
 
     var initConditions = {};
 
-    var svg = d3.select("#qunit-fixture")
+    var svg = d3.select("#graph")
             .append("svg")
             .attr("height", height)
             .attr("width", svgWidth );
