@@ -4,7 +4,7 @@
   "authors": [
     "d <dhenton@localhost.com>"
   ],
-  "description": "a testing environment for Karma and xslt",
+  "description": "a testing environment for Karma,Qunit and Jasmine ",
   "main": "index.html",
   "keywords": [
     "Karma",
@@ -26,6 +26,7 @@
     "json3": "~3.3.2",
     "qunit": "~1.17.1",
     "jasmine": "~2.2.1",
-    "jquery-simulate-ext": "~1.3.0"
+    "jquery-simulate-ext": "~1.3.0",
+    "d3": "~3.5.5"
   }
 }
