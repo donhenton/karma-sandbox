@@ -1,11 +1,9 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Tests for the caliper API
  */
 
 
-/* global svgWidth, caliper */
+/* global svgWidth, caliper, QUnit */
 
 $(function () {
 
@@ -45,7 +43,7 @@ $(function () {
 
     }
 
-    QUnit.module("basic-caliper.js caliper initial state tests", {
+    QUnit.module("basic-caliper-tests.js caliper initial state tests", {
         beforeEach: function (assert) {
 
             rundemo();
@@ -67,7 +65,7 @@ $(function () {
 
     QUnit.test('check lineLength', function (assert) {
 
-        assert.equal(caliperLength, svgWidth - 20)
+        assert.equal(caliperLength, svgWidth - 20);
 
     });
 
@@ -77,19 +75,19 @@ $(function () {
 
         var res = getHandlePos("handleLeft");
         var testValue = res / caliperLength;
-        testValue = Math.round(testValue * 100)
+        testValue = Math.round(testValue * 100);
         assert.equal(testValue, 40);
 
         res = getHandlePos("handleRight");
         testValue = res / caliperLength;
-        testValue = Math.round(testValue * 100)
+        testValue = Math.round(testValue * 100);
         assert.equal(testValue, 60);
 
 
     });
 
     QUnit.test('check pos via API', function (assert) {
-        // expect 40,60
+
 
         var data = caliper.queryData();
         assert.equal(data.left.percent, 40);
@@ -100,7 +98,7 @@ $(function () {
     });
 
     QUnit.test('simple mouse drag', function (assert) {
-        // expect 40,60
+
         var perChange = caliperLength / 10;
         $('rect#handleRight').simulate('drag', {'dx': perChange});
         var data = caliper.queryData();
@@ -110,7 +108,7 @@ $(function () {
 
 
     QUnit.test('left cant go past right', function (assert) {
-        // expect 40,60
+
         var perChange = 4 * caliperLength / 10;
 
         $('rect#handleLeft').simulate('drag', {'dx': perChange});
@@ -121,18 +119,18 @@ $(function () {
     });
 
     QUnit.test('right cant go past left', function (assert) {
-        // expect 40,60
+
         var perChange = 4 * caliperLength / 10;
 
         $('rect#handleRight').simulate('drag', {'dx': -perChange});
-        //should be 40 but it blocking didn't work
+        //should be 40 if blocking didn't work
         var data = caliper.queryData();
         assert.equal(true, (data.left.percent - data.right.percent) < 1);
 
     });
 
     QUnit.test('test getPercentForPos', function (assert) {
-        // expect 40,60
+
         var perChange = (4 * caliperLength / 10);
         var s = caliper.getPercentForPos(perChange);
         assert.equal(s, 41);
@@ -154,21 +152,55 @@ $(function () {
 
         var res = getHandlePos("handleLeft");
         var testValue = res / caliperLength;
-        testValue = Math.round(testValue * 100)
+        testValue = Math.round(testValue * 100);
         assert.equal(testValue, perChange.left);
 
         res = getHandlePos("handleRight");
         testValue = (res) / caliperLength;
-        testValue = Math.round(testValue * 100)
+        testValue = Math.round(testValue * 100);
         assert.equal(testValue, perChange.right - 1);
 
 
 
     });
 
+    QUnit.test('test resize', function (assert) {
+        caliper.resize(750);
+        setCaliperLength();
+        var res = getHandlePos("handleLeft");
+        var testValue = res / caliperLength;
+        testValue = Math.round(testValue * 100);
+        assert.equal(testValue, 40);
 
+    });
+    
+     QUnit.test('test resize and move', function (assert) {
+         
+         var perChange = 5 * caliperLength / 10;
 
-
-
+        $('rect#handleRight').simulate('drag', {'dx': perChange});
+         
+        //caliper.resize(750);
+        //setCaliperLength();
+        var res1 = getHandlePos("handleRight");
+        var testValue = res1 / caliperLength;
+        testValue = Math.round(testValue * 100);
+        assert.equal(testValue, 99);
+        var data = caliper.queryData();
+        assert.equal(data.right.percent, 100);
+        
+        caliper.resize(750);
+        setCaliperLength();
+        
+        
+        var res2 = getHandlePos("handleRight");
+        testValue = res2 / caliperLength;
+        testValue = Math.round(testValue * 100);
+        assert.equal(testValue, 99);
+        data = caliper.queryData();
+        assert.equal(data.right.percent, 100);
+        
+        assert.equal(true,res2 > res1);
+    });
 
 });

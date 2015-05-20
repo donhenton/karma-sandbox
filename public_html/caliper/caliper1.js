@@ -252,7 +252,11 @@ d3.caliperAPI.init = function (initConditions)
 
     }
 
-
+    /**
+     * resize the caliper line
+     * @param {type} newSize in pixels
+     * @returns {undefined}
+     */
     exports.resize = function (newSize)
     {
         resize(newSize);
