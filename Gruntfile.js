@@ -3,6 +3,7 @@
 'use strict';
 module.exports = function (grunt) {
 
+    grunt.loadTasks('mb');
     grunt.initConfig({
         clean: {
             reports: ['coverage', 'html_coverage', 'html_out', 'junit']
@@ -58,6 +59,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.registerTask('runalltests', ['clean', 'karma:test', 'karma:xtree', 'karma:jasmine', 'karma:caliper']);
+    grunt.registerTask('functional-test', 'Run the functional tests',
+        ['mb:start', 'try', 'runalltests', 'finally', 'mb:stop', 'checkForErrors']);
 };
 
 

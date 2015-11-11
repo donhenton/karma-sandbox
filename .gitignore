@@ -7,3 +7,4 @@ html_out/
 junit/
 html_coverage/
 /mb.log
+/mb-grunt.log
