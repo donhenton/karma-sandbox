@@ -1,0 +1,3 @@
+this is a postman collection that shows how to load and use a imposter,
+then query the server for the submitted results which are stored by the
+server. 2525 is the default port that mountebank is run on.
