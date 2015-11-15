@@ -2,7 +2,7 @@
 
 
 
-describe("bind demo", function () {
+describe("bind_tests.js", function () {
     var myButton = null;
     beforeEach(function () {
         //see bind_sample.js for the definition of button
