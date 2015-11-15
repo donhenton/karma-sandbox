@@ -34,6 +34,16 @@ describe("inheritance_tests.js", function () {
         expect(alpha1.getX()).toEqual(1);
         expect(alpha1.getY()).toEqual(2);
     });
+    
+    it('test Worker child', function () {
+
+        var w = new Worker("Fred","Jones");
+        
+
+        expect(w.FullName()).toEqual("Fred Jones");
+    });
+    
+    
 
 
 });

@@ -5,7 +5,7 @@ NS.myFunction = {
       stuff: [],
 
     init: function init() {
-        console.log("xxxxx "+this.toString());
+     //   console.log("xxxxx "+this.toString());
         this.stuff.push('Testing');
     },
     reset: function reset() {
