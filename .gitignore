@@ -6,4 +6,5 @@ karma_html/**/
 html_out/
 junit/
 html_coverage/
+/*.log
 /mb.log
