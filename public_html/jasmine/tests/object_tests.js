@@ -40,5 +40,15 @@ describe("object_tests.js", function() {
     });
     
     
+     describe("slice tests", function() {
+         
+         var initArray = [1,2,3,4];
+         var result = initArray.splice(1,1);
+        it("[1,2,3,4] split 1", function() {
+            expect(initArray).toEqual([1,3,4]);
+        });
+         
+    });
+    
 });
 
