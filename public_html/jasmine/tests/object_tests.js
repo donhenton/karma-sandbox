@@ -47,7 +47,13 @@ describe("object_tests.js", function() {
         it("[1,2,3,4] split 1", function() {
             expect(initArray).toEqual([1,3,4]);
         });
-         
+        
+        var kArray = [{"key":"alpha","value":34},{"key":"beta","value":79}];
+        kArray.splice(0,1);
+         it("object split", function() {
+            expect(kArray.length).toEqual(1);
+            expect(kArray[0].key).toEqual("beta");
+        });
     });
     
 });
