@@ -37,6 +37,10 @@ module.exports = function (grunt) {
             jasmine: {
                 configFile: 'public_html/jasmine/conf/jasmine.conf.js',
                 singleRun: true
+            },
+             jasminejq: {
+                configFile: 'public_html/jasmine-jquery/conf/jasmine-jquery.conf.js',
+                singleRun: true
             }
         }
 
@@ -53,8 +57,9 @@ module.exports = function (grunt) {
     grunt.registerTask('runkarma', ['karma:test']);
     grunt.registerTask('runcaliper', ['karma:caliper']);
     grunt.registerTask('runxtree', ['karma:xtree']);
+    grunt.registerTask('runjasminejq',['karma:jasminejq']);
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.registerTask('runjsamine', ['karma:jasmine']);
+    grunt.registerTask('runjsamine', ['clean','karma:jasmine']);
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.registerTask('runalltests', ['clean', 'karma:test', 'karma:xtree', 'karma:jasmine', 'karma:caliper']);
