@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-describe("fixturecl_tests.js", function () {
+describe("fixture_tests.js", function () {
 
 
 
     beforeAll(function () {
         var path = '';
+        //if the test is run standalone, then do not add 'base/'
+        
         if (typeof window.__karma__ !== 'undefined') {
             path += 'base/';
         }
-       // jasmine.getFixtures().fixturesPath = path + 'spec/javascripts/fixtures';
-
 
         jasmine.getFixtures().fixturesPath = path+ 'public_html/jasmine-jquery/fixtures/';
 
