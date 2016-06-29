@@ -74,7 +74,8 @@ $(function () {
         window.setTimeout(function () {
             var timeVar2 = Date.now();
             var diff = (timeVar2 - timeVar1);
-            assert.ok(diff> 99 && diff < 105);
+            console.log("******* "+diff)
+            assert.ok(diff> 90 && diff < 115);
             QUnit.start();
         }, "100");
 
