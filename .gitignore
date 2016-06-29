@@ -8,3 +8,4 @@ junit/
 html_coverage/
 /*.log
 /mb.log
+/reports/
