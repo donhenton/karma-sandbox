@@ -1,6 +1,14 @@
 # karma-sandbox
 
-Uses gulp, karma and jasmine
+Includes these features
+
+* gulp
+* karma
+* jasmine
+* fixtures
+* Standalone testing
+* coverage with Istanbul
+* html reporting 
 
 ## Tags
 1.0.0 contains older code using grunt and qunit
