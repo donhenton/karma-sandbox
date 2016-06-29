@@ -31,4 +31,4 @@ gulp.task('clean', function (  ) {
 
 });
 
-gulp.task("default",['clean','coverage']);
+gulp.task("default",['clean','testJasmine','testJasmineJQ']);

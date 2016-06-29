@@ -27,9 +27,10 @@ module.exports = function (config) {
         },
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {
-             'test/jasmine-jquery/code/*.js': ['coverage']
-        },
+        // coverge not needed here really
+         preprocessors: {
+              'test/jasmine-jquery/javascripts/*.js': ['coverage']
+         },
         junitReporter: {
             outputDir: "reports/jasmine-jquery/junit/",
             outputFile: 'jasmine-jquery-test-results.xml',
@@ -40,19 +41,19 @@ module.exports = function (config) {
                   {
                     type: 'html',
                     dir: 'reports/jasmine-jquery/html_coverage/',
-                    subdir: 'jasmine-jquery-chrome',
+                   
                     file: 'jasmine-jquery-chrome.xml'
                 }, 
                 
                 
                 {
                     type: 'cobertura',
-                    dir: 'coverage/',
+                    dir: 'reports/jasmine-jquery/coverage/',
                     subdir: 'chrome',
                     file: 'reports/jasmine-jquery/jasmine-jquery-chrome.xml'
                 }, {
                     type: 'json',
-                    dir: 'coverage/',
+                    dir: 'reports/jasmine-jquery/coverage/',
                     subdir: 'json',
                     file: 'reports/jasmine-jquery/jasmine-jquery-coverage.json'
                 }]
@@ -62,7 +63,7 @@ module.exports = function (config) {
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['progress', 'coverage', 'html', 'dots', 'junit'],
         // web server port
-        port: 9876,
+        port: 9877,
         // enable / disable colors in the output (reporters and logs)
         colors: true,
         // level of logging
