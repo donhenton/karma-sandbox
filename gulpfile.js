@@ -22,6 +22,14 @@ gulp.task('testJasmineJQ', function(done) {
        }).start();
    });
 
+gulp.task('testDeviant', function(done) {
+
+    return new karma.Server({
+            configFile:  __dirname + '/test/deviant-images/conf/deviant-images.conf.js' 
+        }, done).on('error', function(err) {
+           throw err;
+       }).start();
+   });
 
 
 
@@ -31,4 +39,4 @@ gulp.task('clean', function (  ) {
 
 });
 
-gulp.task("default",['clean','testJasmine','testJasmineJQ']);
+gulp.task("default",['clean','testJasmine','testJasmineJQ','testDeviant']);
