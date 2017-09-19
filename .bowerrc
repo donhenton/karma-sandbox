@@ -1,3 +1,4 @@
 {
-"directory": "public_html/js"
+"directory": "public_html/js",
+"strict-ssl": false
 }
