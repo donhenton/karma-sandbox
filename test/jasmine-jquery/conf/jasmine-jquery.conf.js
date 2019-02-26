@@ -1,6 +1,7 @@
 // Karma configuration
 // Generated on Tue Mar 24 2015 09:16:43 GMT-0500 (CDT)
 //http://karma-runner.github.io/0.10/config/configuration-file.html
+//https://github.com/velesin/jasmine-jquery
 
 module.exports = function (config) {
     config.set({
