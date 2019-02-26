@@ -5,7 +5,7 @@ Includes these features
 * gulp
 * karma
 * jasmine
-* fixtures
+* fixtures (with and without jquery)
 * Standalone testing
 * coverage with Istanbul
 * html reporting 
