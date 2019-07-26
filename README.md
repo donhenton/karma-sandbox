@@ -20,4 +20,5 @@ in testing scenario
 
 
 ## Updates
-ES6 tests can be found at https://github.com/donhenton/js-parser
+* ES6 tests can be found at https://github.com/donhenton/js-parser
+* Puppeteer set up can be found at https://github.com/donhenton/karma-sandbox-two
